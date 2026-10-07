@@ -20,10 +20,12 @@ from the cloud bill instead of the architecture. This package gives you two thin
 ## Install
 
 ```bash
-pip install .
+pip install tokenecon
 ```
 
 No dependencies. Python 3.9+.
+
+From source: `git clone https://github.com/karmendra8386/agentic-ai-token-economics.git && cd agentic-ai-token-economics && pip install .`
 
 ## Quickstart
 
