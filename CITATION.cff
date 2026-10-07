@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+title: "tokenecon: Token-Economics Cost Model and Tiered Routing for Agentic AI"
+message: "If you use this software, please cite it using the metadata below."
+type: software
+authors:
+  - family-names: Pandey
+    given-names: Karmendra
+doi: 10.5281/zenodo.23195511
+repository-code: "https://github.com/karmendra8386/agentic-ai-token-economics"
+license: MIT
+version: 0.1.0
+date-released: 2026-10-06
