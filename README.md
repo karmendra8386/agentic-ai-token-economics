@@ -1,5 +1,9 @@
 # tokenecon — Token-Economics for Agentic AI
 
+[![PyPI version](https://img.shields.io/pypi/v/tokenecon.svg)](https://pypi.org/project/tokenecon/)
+[![Python versions](https://img.shields.io/pypi/pyversions/tokenecon.svg)](https://pypi.org/project/tokenecon/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 A dependency-free Python implementation of the token-economics cost model and
 tiered model routing design from the paper
 [*Token-Economics for Agentic AI: A Cost Model and Tiered Routing Reference*](https://zenodo.org/records/23195511)
@@ -45,6 +49,30 @@ print(receipt.pretty())
 Every run produces a **receipt**: tier used, tokens, cost, and confidence per step.
 Receipts are the unit of cost observability — accumulate them and they become the
 dataset your routing policy improves from.
+
+## Track a real Strands agent
+
+The router above forecasts cost. To measure a live agent, point the
+`CostTracker` at any [Strands](https://github.com/strands-agents/harness-sdk)
+agent — each event-loop cycle becomes a priced receipt step, using the token
+counts the provider already reported (no estimation, no heuristics):
+
+```python
+from tokenecon.integrations.strands import CostTracker
+
+tracker = CostTracker(tier="medium")  # or pass a tokenecon.ModelTier
+agent("Summarize our Q3 cloud spend.")
+print(tracker.receipt(agent, "Summarize our Q3 cloud spend.").pretty())
+# request    : Summarize our Q3 cloud spend.
+# difficulty : 0.213
+# outcome    : ok
+#   step 1: tier=medium in=1840 out=312 cost=$0.003088 conf=1.00 event-loop cycle 1
+#   step 2: tier=medium in=2210 out=148 cost=$0.002802 conf=1.00 event-loop cycle 2
+# total_cost : $0.005890
+```
+
+The integration is optional and dependency-free: it only reads the agent's
+`event_loop_metrics`, so `strands-agents` is never imported by tokenecon itself.
 
 ## CLI
 
