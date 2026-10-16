@@ -1,12 +1,17 @@
 cff-version: 1.2.0
-title: "tokenecon: Token-Economics Cost Model and Tiered Routing for Agentic AI"
 message: "If you use this software, please cite it using the metadata below."
 type: software
+title: "tokenecon"
 authors:
   - family-names: Pandey
     given-names: Karmendra
-doi: 10.5281/zenodo.23195511
+version: 0.2.0
+date-released: 2026-10-09
 repository-code: "https://github.com/karmendra8386/agentic-ai-token-economics"
+url: "https://github.com/karmendra8386/agentic-ai-token-economics"
 license: MIT
-version: 0.1.0
-date-released: 2026-10-06
+abstract: "A dependency-free Python library for token-economics cost accounting of LLM agents: it decomposes per-task spend into prompt, completion, tool-call, and retrieval tokens priced per model tier, and provides tiered routing with per-task budgets so agent costs can be forecast and budgeted before deployment."
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.23195511
+    description: "Companion preprint"
