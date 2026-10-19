@@ -125,10 +125,37 @@ between tiers, tiered cost is roughly 13% of the all-strong baseline —
 
 ## Cite
 
-If you use this in your work, please cite the paper:
+If you use this software in your work, please cite the software itself — and,
+for the cost model and methods behind it, the companion preprint.
+
+**Software**
+
+```bibtex
+@software{pandey_tokenecon_2026,
+  author = {Pandey, Karmendra},
+  title = {tokenecon},
+  version = {0.2.1},
+  doi = {10.5281/zenodo.23427025},
+  url = {https://github.com/karmendra8386/agentic-ai-token-economics},
+  date = {2026-10-19}
+}
+```
+
+**Companion preprint**
 
 > K. Pandey, "Token-Economics for Agentic AI: A Cost Model and Tiered Routing
 > Reference," Zenodo, DOI [10.5281/zenodo.23195511](https://zenodo.org/records/23195511), Oct. 2026.
+
+```bibtex
+@misc{pandey_tokeneconomics_2026,
+  author = {Pandey, Karmendra},
+  title = {Token-Economics for Agentic AI: A Cost Model and Tiered Routing Reference},
+  doi = {10.5281/zenodo.23195511},
+  url = {https://zenodo.org/records/23195511},
+  publisher = {Zenodo},
+  date = {2026-10}
+}
+```
 
 A `CITATION.cff` is included for automated citation tooling.
 

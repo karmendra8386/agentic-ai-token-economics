@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tokenecon"
-version = "0.2.0"
+version = "0.2.1"
 description = "Token-economics cost model and tiered model routing for agentic AI workloads"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -24,6 +24,8 @@ tokenecon = "tokenecon.cli:main"
 [project.urls]
 Homepage = "https://github.com/karmendra8386/agentic-ai-token-economics"
 Paper = "https://zenodo.org/records/23195511"
+Repository = "https://github.com/karmendra8386/agentic-ai-token-economics"
+DOI = "https://doi.org/10.5281/zenodo.23427025"
 
 [tool.setuptools.packages.find]
 where = ["."]
