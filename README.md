@@ -1,8 +1,8 @@
 # tokenecon — Token-Economics for Agentic AI
 
 [![PyPI version](https://img.shields.io/pypi/v/tokenecon.svg)](https://pypi.org/project/tokenecon/)
-[![Python versions](https://img.shields.io/pypi/pyversions/tokenecon.svg)](https://pypi.org/project/tokenecon/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![PyPI downloads](https://img.shields.io/pypi/dm/tokenecon.svg)](https://pypi.org/project/tokenecon/)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.23427025-blue)](https://doi.org/10.5281/zenodo.23427025)
 
 A dependency-free Python implementation of the token-economics cost model and
 tiered model routing design from the paper
