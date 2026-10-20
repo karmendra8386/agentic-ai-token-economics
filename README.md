@@ -74,6 +74,42 @@ print(tracker.receipt(agent, "Summarize our Q3 cloud spend.").pretty())
 The integration is optional and dependency-free: it only reads the agent's
 `event_loop_metrics`, so `strands-agents` is never imported by tokenecon itself.
 
+## Integrations
+
+The same `CostTracker` API — `steps`, `total_cost`, `receipt(request)`,
+`reset()` — is available for the other stacks agents run on. Each integration
+prices the token counts the framework already reports, and each imports its
+framework lazily: tokenecon itself stays dependency-free.
+
+**LiteLLM** — register the tracker as a callback and every successful call
+is priced:
+
+```python
+import litellm
+from tokenecon.integrations.litellm import CostTracker
+
+tracker = CostTracker(tier="medium")
+litellm.callbacks = [tracker]
+```
+
+**LangChain / LangGraph** — pass the tracker as a callback handler, on the
+model or in the graph's invoke config:
+
+```python
+from tokenecon.integrations.langchain import CostTracker
+
+tracker = CostTracker(tier="medium")
+llm = ChatOpenAI(model="gpt-4o-mini", callbacks=[tracker])
+# or: graph.invoke(inputs, config={"callbacks": [tracker]})
+```
+
+## Badge
+
+![cost per correct](https://raw.githubusercontent.com/karmendra8386/agentic-ai-token-economics/main/docs/badge-sample.svg)
+
+Any run can render its own cost-per-correct badge with
+`python -m tokenecon.badge results.json` — see [docs/badge.md](docs/badge.md).
+
 ## CLI
 
 ```bash
