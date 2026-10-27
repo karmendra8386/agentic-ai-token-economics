@@ -20,7 +20,7 @@ Import this module only when you route calls through LiteLLM::
     receipt = tracker.receipt("Summarize our Q3 cloud spend.")
     print(receipt.pretty())
     # request    : Summarize our Q3 cloud spend.
-    # difficulty : 0.162
+    # difficulty : 0.163
     # outcome    : ok
     #   step 1: tier=medium in=1840 out=312 cost=$0.003088 conf=1.00 litellm call 1 (gpt-4o-mini)
     # total_cost : $0.003088

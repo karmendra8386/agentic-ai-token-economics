@@ -40,10 +40,11 @@ router = TieredRouter(tiers=list(DEFAULT_TIERS), budget=0.05)  # 5¢ per task
 receipt = router.run("Summarize our Q3 cloud spend in two sentences.", MockModel())
 print(receipt.pretty())
 # request    : Summarize our Q3 cloud spend in two sentences.
-# difficulty : 0.213
+# difficulty : 0.17
 # outcome    : ok
-#   step 1: tier=small in=210 out=120 cost=$0.000138 conf=0.70
-# total_cost : $0.000138
+#   step 1: tier=small in=211 out=120 cost=$0.000138 conf=0.46
+#   step 2: tier=medium in=911 out=220 cost=$0.001791 conf=0.76
+# total_cost : $0.001929
 ```
 
 Every run produces a **receipt**: tier used, tokens, cost, and confidence per step.
@@ -64,7 +65,7 @@ tracker = CostTracker(tier="medium")  # or pass a tokenecon.ModelTier
 agent("Summarize our Q3 cloud spend.")
 print(tracker.receipt(agent, "Summarize our Q3 cloud spend.").pretty())
 # request    : Summarize our Q3 cloud spend.
-# difficulty : 0.213
+# difficulty : 0.163
 # outcome    : ok
 #   step 1: tier=medium in=1840 out=312 cost=$0.003088 conf=1.00 event-loop cycle 1
 #   step 2: tier=medium in=2210 out=148 cost=$0.002802 conf=1.00 event-loop cycle 2
@@ -170,10 +171,10 @@ for the cost model and methods behind it, the companion preprint.
 @software{pandey_tokenecon_2026,
   author = {Pandey, Karmendra},
   title = {tokenecon},
-  version = {0.2.1},
+  version = {0.2.2},
   doi = {10.5281/zenodo.23427025},
   url = {https://github.com/karmendra8386/agentic-ai-token-economics},
-  date = {2026-10-19}
+  date = {2026-10-20}
 }
 ```
 

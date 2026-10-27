@@ -144,3 +144,23 @@ def test_receipt_serializes():
     assert d["outcome"] == "ok"
     assert len(d["steps"]) >= 1
     assert "tier" in d["steps"][0]
+
+
+def test_readme_quickstart_output_is_accurate():
+    # Regression guard: the README quickstart prints this exact receipt.
+    # MockModel is deterministic, so if routing, pricing, or the
+    # classifier changes these numbers, the README must change with
+    # them — docs that disagree with the code are worse than no docs.
+    router = TieredRouter(tiers=list(DEFAULT_TIERS), budget=0.05)
+    receipt = router.run(
+        "Summarize our Q3 cloud spend in two sentences.", MockModel()
+    )
+    assert receipt.total_cost == pytest.approx(0.001929, abs=1e-6)
+    assert receipt.pretty() == (
+        "request    : Summarize our Q3 cloud spend in two sentences.\n"
+        "difficulty : 0.17\n"
+        "outcome    : ok\n"
+        "  step 1: tier=small in=211 out=120 cost=$0.000138 conf=0.46\n"
+        "  step 2: tier=medium in=911 out=220 cost=$0.001791 conf=0.76\n"
+        "total_cost : $0.001929"
+    )

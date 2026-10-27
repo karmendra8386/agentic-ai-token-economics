@@ -17,7 +17,7 @@ Import this module only when you have a Strands agent to track::
     receipt = tracker.receipt(agent, "Summarize our Q3 cloud spend.")
     print(receipt.pretty())
     # request    : Summarize our Q3 cloud spend.
-    # difficulty : 0.213
+    # difficulty : 0.163
     # outcome    : ok
     #   step 1: tier=medium in=1840 out=312 cost=$0.003088 conf=1.00 event-loop cycle 1
     #   step 2: tier=medium in=2210 out=148 cost=$0.002802 conf=1.00 event-loop cycle 2
