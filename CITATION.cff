@@ -6,8 +6,8 @@ authors:
   - family-names: Pandey
     given-names: Karmendra
     orcid: "https://orcid.org/0009-0000-3461-9889"
-version: 0.2.2
-date-released: 2026-10-20
+version: 0.2.3
+date-released: 2026-10-28
 doi: 10.5281/zenodo.23427025
 repository-code: "https://github.com/karmendra8386/agentic-ai-token-economics"
 url: "https://github.com/karmendra8386/agentic-ai-token-economics"

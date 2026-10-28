@@ -7,7 +7,7 @@ from .pricing import DEFAULT_TIERS, ModelTier
 from .receipts import StepReceipt, TaskReceipt
 from .router import TieredRouter
 
-__version__ = "0.2.2"
+__version__ = "0.2.3"
 __all__ = [
     "ModelTier",
     "DEFAULT_TIERS",

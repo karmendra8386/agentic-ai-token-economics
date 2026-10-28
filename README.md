@@ -171,10 +171,10 @@ for the cost model and methods behind it, the companion preprint.
 @software{pandey_tokenecon_2026,
   author = {Pandey, Karmendra},
   title = {tokenecon},
-  version = {0.2.2},
+  version = {0.2.3},
   doi = {10.5281/zenodo.23427025},
   url = {https://github.com/karmendra8386/agentic-ai-token-economics},
-  date = {2026-10-20}
+  date = {2026-10-28}
 }
 ```
 
