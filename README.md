@@ -75,6 +75,41 @@ print(tracker.receipt(agent, "Summarize our Q3 cloud spend.").pretty())
 The integration is optional and dependency-free: it only reads the agent's
 `event_loop_metrics`, so `strands-agents` is never imported by tokenecon itself.
 
+### Enforce a budget on a live Strands agent
+
+`CostTracker` accounts after the run. `CostReceiptHook` is a Strands hook
+provider that prices each model call **as it completes** — from the
+provider-reported usage the event loop attaches to the call — and, given a
+budget, cancels the next model call before it happens once the budget is
+spent:
+
+```python
+from strands import Agent
+from tokenecon.integrations.strands import CostReceiptHook
+
+hook = CostReceiptHook(tier="medium", budget=0.004)  # 0.4¢ per run
+agent = Agent(hooks=[hook])
+agent("Summarize our Q3 cloud spend.")
+print(hook.receipt("Summarize our Q3 cloud spend.").pretty())
+# request    : Summarize our Q3 cloud spend.
+# difficulty : 0.163
+# outcome    : degraded
+#   step 1: tier=medium in=1840 out=312 cost=$0.003088 conf=1.00 model call 1 (stub-model-1)
+#   step 2: tier=medium in=2210 out=148 cost=$0.002802 conf=1.00 model call 2 (stub-model-1)
+# total_cost : $0.005890
+```
+
+Output verified by execution against the real Strands SDK with a scripted
+stub model (id `stub-model-1`, per-call usage 1,840/312 then 2,210/148
+tokens — the mock pattern, so no AWS credentials are needed to reproduce
+it). The third model call never reached the model: after step 2 the spend
+($0.005890) had crossed the $0.004 budget, the hook cancelled the call, and
+the run ended with the cancellation message as its answer — hence the
+receipt's `degraded` outcome. Omit `budget` for receipts only, with no
+enforcement. Unlike `CostTracker`, the hook needs `strands-agents`
+installed (`pip install strands-agents`); tokenecon core stays
+dependency-free.
+
 ## Integrations
 
 The same `CostTracker` API — `steps`, `total_cost`, `receipt(request)`,
