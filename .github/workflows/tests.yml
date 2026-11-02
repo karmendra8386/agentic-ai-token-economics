@@ -6,11 +6,23 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
+        include:
+          # ubuntu-latest (Ubuntu 26.04) no longer ships a Python 3.9 build,
+          # so the 3.9 leg runs on ubuntu-22.04 where it is still available.
+          - python-version: "3.9"
+            runs-on: ubuntu-22.04
+          - python-version: "3.10"
+            runs-on: ubuntu-latest
+          - python-version: "3.11"
+            runs-on: ubuntu-latest
+          - python-version: "3.12"
+            runs-on: ubuntu-latest
+          - python-version: "3.13"
+            runs-on: ubuntu-latest
+    runs-on: ${{ matrix.runs-on }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
