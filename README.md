@@ -195,6 +195,7 @@ for the cost model and methods behind it, the companion preprint.
 ```
 
 A `CITATION.cff` is included for automated citation tooling.
+Write-up: [Every Agent Run Should Come With a Receipt](https://builder.aws.com/content/3KexbQmMtjr4M9sB12oke2knKeL/every-agent-run-should-come-with-a-receipt) — AWS Builder Center
 
 ## License
 
