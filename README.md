@@ -27,6 +27,15 @@ from the cloud bill instead of the architecture. This package gives you two thin
 
 *A live run of the shipped code (Nov 9, 2026): five sample tasks through the tiered router — router total $0.029307 vs $0.047454 all-large (61.76% of baseline) — then a cost-per-correct badge priced from the run's own receipts: $0.005861 per solved task. The demo uses the repo's deterministic MockModel (no API keys); it exercises the routing and receipt machinery. Full outputs are in [`demo/`](demo/).*
 
+## Works with
+
+- **[Argus](https://github.com/karmendra8386/argus)** — the gateway: in Argus Chat, the integrated showcase, every answer that passes through Argus ships with a tokenecon receipt under it (tier, tokens, cost) — the receipt in this demo is the same object, produced live.
+- **[agent-cost-mcp-server](https://github.com/karmendra8386/agent-cost-mcp-server)** — this cost model exposed as MCP tools, so an agent can price a run, compare models by cost per successful task, and check its budget from inside its own tooling.
+- **[Cost Per Prompt](https://github.com/karmendra8386/cost-per-prompt)** — the browser face of the same pricing: live token/cost estimates inside ChatGPT, Claude and Gemini, with session export as Cost Per Correct JSON.
+- **The benchmarks** — cost per correct is only as honest as the "correct" underneath it: [Argus-Bench](https://doi.org/10.5281/zenodo.23877366) (gateway defences vs prompt injection) and [PersistAIBench](https://github.com/karmendra8386/persistbench-bench) (memory truthfulness over long tasks) are the suite's measures of it.
+
+**The connected set** — one thread through all of it: what an agent did, what it cost, and whether it should have been allowed. [Argus](https://github.com/karmendra8386/argus) · [tokenecon](https://github.com/karmendra8386/agentic-ai-token-economics) · [mcplens](https://github.com/karmendra8386/mcplens) · [agent-cost-mcp-server](https://github.com/karmendra8386/agent-cost-mcp-server) · [Argus Lens](https://github.com/karmendra8386/argus-lens) · [PersistAIBench](https://github.com/karmendra8386/persistbench-bench) · [Argus-Bench](https://doi.org/10.5281/zenodo.23877366)
+
 ## Install
 
 ```bash
