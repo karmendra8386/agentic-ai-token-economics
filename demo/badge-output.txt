@@ -1,0 +1,10 @@
+      ok  $0.001924  What is the capital of France?
+      ok  $0.001938  Summarize these three paragraphs about our Q3 cloud 
+      ok  $0.014787  Compare Kubernetes and ECS for our batch workload an
+      ok  $0.001112  Debug this multi-step data pipeline failure. First r
+      ok  $0.009546  Design a fault-tolerant agent orchestration layer. P
+
+results: {"model": "tiered-router (mock model)", "tasks_solved": 5, "tasks_total": 5, "total_cost_usd": 0.029307}
+>> cost per correct = $0.029307 / 5 solved = $0.005861 per solved task
+badge endpoint JSON: {"schemaVersion": 1, "label": "cost / correct", "message": "$0.005861", "color": "brightgreen"}
+wrote cost-per-correct.svg

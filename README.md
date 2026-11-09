@@ -21,6 +21,12 @@ from the cloud bill instead of the architecture. This package gives you two thin
    cheapest tier capable of handling it, escalate on low confidence, and enforce
    per-task budgets that degrade gracefully instead of failing.
 
+## Demo
+
+![tokenecon demo](demo/demo.gif)
+
+*A live run of the shipped code (Nov 9, 2026): five sample tasks through the tiered router — router total $0.029307 vs $0.047454 all-large (61.76% of baseline) — then a cost-per-correct badge priced from the run's own receipts: $0.005861 per solved task. The demo uses the repo's deterministic MockModel (no API keys); it exercises the routing and receipt machinery. Full outputs are in [`demo/`](demo/).*
+
 ## Install
 
 ```bash

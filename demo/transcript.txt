@@ -1,0 +1,73 @@
+
+### tokenecon — live demo run, Nov 9 2026
+# tokenecon: cost model + tiered routing for agentic AI.
+# Two real runs of the shipped code follow. The CLI demo uses the
+# repo's deterministic MockModel (no API keys) — it exercises the
+# routing, escalation, budget and receipt machinery. Real-model
+# numbers live in the Cost Per Correct v2 dataset (Kaggle/HF).
+
+### tokenecon demo: 5 sample tasks through the tiered router
+$ python3 -m tokenecon.cli demo
+
+request    : What is the capital of France?
+difficulty : 0.215
+outcome    : ok
+  step 1: tier=small in=207 out=120 cost=$0.000137 conf=0.45
+  step 2: tier=medium in=907 out=220 cost=$0.001787 conf=0.75
+total_cost : $0.001924
+------------------------------------------------------------
+request    : Summarize these three paragraphs about our Q3 cloud spend in two sentences.
+difficulty : 0.18
+outcome    : ok
+  step 1: tier=small in=218 out=120 cost=$0.000140 conf=0.46
+  step 2: tier=medium in=918 out=220 cost=$0.001798 conf=0.76
+total_cost : $0.001938
+------------------------------------------------------------
+request    : Compare Kubernetes and ECS for our batch workload and recommend one, with trade-
+difficulty : 0.422
+outcome    : ok
+  step 1: tier=medium in=221 out=220 cost=$0.001101 conf=0.69
+  step 2: tier=large in=921 out=340 cost=$0.013686 conf=0.99
+total_cost : $0.014787
+------------------------------------------------------------
+request    : Debug this multi-step data pipeline failure. First reproduce the error, then tra
+difficulty : 0.35
+outcome    : ok
+  step 1: tier=medium in=232 out=220 cost=$0.001112 conf=0.71
+total_cost : $0.001112
+------------------------------------------------------------
+request    : Design a fault-tolerant agent orchestration layer. Prove it handles partial tool
+difficulty : 0.585
+outcome    : ok
+  step 1: tier=large in=231 out=340 cost=$0.009546 conf=0.95
+total_cost : $0.009546
+------------------------------------------------------------
+router total   : $0.029307
+all-large total: $0.047454
+ratio          : 61.76% of baseline
+
+[exit 0]
+
+### Cost per correct: badge priced from the run's own receipts
+$ python3 /home/hatch/workspace/demo-showcase/runners/badge_demo.py
+
+      ok  $0.001924  What is the capital of France?
+      ok  $0.001938  Summarize these three paragraphs about our Q3 cloud 
+      ok  $0.014787  Compare Kubernetes and ECS for our batch workload an
+      ok  $0.001112  Debug this multi-step data pipeline failure. First r
+      ok  $0.009546  Design a fault-tolerant agent orchestration layer. P
+
+results: {"model": "tiered-router (mock model)", "tasks_solved": 5, "tasks_total": 5, "total_cost_usd": 0.029307}
+>> cost per correct = $0.029307 / 5 solved = $0.005861 per solved task
+badge endpoint JSON: {"schemaVersion": 1, "label": "cost / correct", "message": "$0.005861", "color": "brightgreen"}
+wrote cost-per-correct.svg
+
+[exit 0]
+
+### What this shows
+>> Every task returns a receipt: tier, tokens, cost, confidence.
+>> Easy tasks stay on cheap tiers; hard ones escalate — the router
+>>   total lands far below serving everything on the large tier.
+>> Receipts aggregate into cost per correct: spend per SOLVED task,
+>>   the number an agent budget should actually be set in.
+# Evidence: demo/cli-demo-output.txt + demo/badge-output.txt + demo/cost-per-correct.svg

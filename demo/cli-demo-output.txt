@@ -1,0 +1,36 @@
+request    : What is the capital of France?
+difficulty : 0.215
+outcome    : ok
+  step 1: tier=small in=207 out=120 cost=$0.000137 conf=0.45
+  step 2: tier=medium in=907 out=220 cost=$0.001787 conf=0.75
+total_cost : $0.001924
+------------------------------------------------------------
+request    : Summarize these three paragraphs about our Q3 cloud spend in two sentences.
+difficulty : 0.18
+outcome    : ok
+  step 1: tier=small in=218 out=120 cost=$0.000140 conf=0.46
+  step 2: tier=medium in=918 out=220 cost=$0.001798 conf=0.76
+total_cost : $0.001938
+------------------------------------------------------------
+request    : Compare Kubernetes and ECS for our batch workload and recommend one, with trade-
+difficulty : 0.422
+outcome    : ok
+  step 1: tier=medium in=221 out=220 cost=$0.001101 conf=0.69
+  step 2: tier=large in=921 out=340 cost=$0.013686 conf=0.99
+total_cost : $0.014787
+------------------------------------------------------------
+request    : Debug this multi-step data pipeline failure. First reproduce the error, then tra
+difficulty : 0.35
+outcome    : ok
+  step 1: tier=medium in=232 out=220 cost=$0.001112 conf=0.71
+total_cost : $0.001112
+------------------------------------------------------------
+request    : Design a fault-tolerant agent orchestration layer. Prove it handles partial tool
+difficulty : 0.585
+outcome    : ok
+  step 1: tier=large in=231 out=340 cost=$0.009546 conf=0.95
+total_cost : $0.009546
+------------------------------------------------------------
+router total   : $0.029307
+all-large total: $0.047454
+ratio          : 61.76% of baseline
