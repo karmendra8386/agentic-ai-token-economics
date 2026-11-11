@@ -3,6 +3,7 @@
 [![PyPI version](https://img.shields.io/pypi/v/tokenecon.svg)](https://pypi.org/project/tokenecon/)
 [![PyPI downloads](https://img.shields.io/pypi/dm/tokenecon.svg)](https://pypi.org/project/tokenecon/)
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.23427025-blue)](https://doi.org/10.5281/zenodo.23427025)
+[![DevOps Dozen 2026 Finalist](https://devopsdozen.com/assets/badges/07-best-end-user-application-of-ai-in-software-delivery.png)](https://devopsdozen.com/finalists/07-best-end-user-application-of-ai-in-software-delivery.html)
 
 A dependency-free Python implementation of the token-economics cost model and
 tiered model routing design from the paper
